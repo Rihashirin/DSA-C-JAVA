@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class InsertAtArray
+{
+    public static void main(String[] args)
+    {
+       Scanner sc= new Scanner(System.in);
+       int[] arr = new int[100];
+       int n,pos,val;
+       System.out.print("enter size :");
+       n=sc.nextInt();
+       System.out.print("enter array erlements:");
+        for (int i=0; i<n;  i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        System.out.print("enter position :");
+        pos=sc.nextInt();
+        System.out.print("enter value :");
+        val=sc.nextInt();
+        for(int i=n-1; i>=pos; i--)
+        {
+            arr[i+1]=arr[i];
+        }
+        arr[pos]=val;
+        n++;
+        System.out.print("\nArray after insertion:");
+        for(int i=0; i<n; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
