@@ -1,0 +1,41 @@
+#include<stdio.h>
+int main()
+{
+     int arr[100],i,j,n,val,pos,size;
+     printf("Enter size: ");
+     scanf("%d",&n);
+     printf("Enter array elements: ");
+     for(i=0; i<n; i++)
+     {
+	    scanf("%d",&arr[i]);
+     }
+     printf("Enter insert size: ");
+     scanf("%d",&size);
+     for(j=0; j<size; j++)
+     {
+     	printf("Enter position: ");
+	    scanf("%d",&pos);
+    	if(pos<0 || pos>n)
+	    {
+	         printf("Invalid position.");
+	       continue;
+     	}
+	    printf("Enter value to insert: ");
+    	scanf("%d",&val);
+     }
+     for(i=n-1; i>=pos; i--)
+     {
+          arr[i+1]=arr[i];
+     }
+     arr[pos]=val;
+     n++;
+     printf("Array after insertion: ");
+     for(i=0; i<n; i++)
+     {	
+	    printf("%d ",arr[i]);
+     }
+     return 0;
+}
+
+
+
