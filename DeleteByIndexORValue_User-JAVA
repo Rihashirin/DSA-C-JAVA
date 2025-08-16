@@ -1,0 +1,72 @@
+import java.util.Scanner;
+public class DeleteArray
+{
+    public static int DeleteByIndex(int[] arr, int n, int index)
+    {
+        if(index<0 || index>=n)
+        {
+            System.out.print("Invalid index.");
+            return n;
+        }
+        for(int i=index; i<n-1; i++)
+        {
+            arr[i]=arr[i+1];
+        }
+        return n-1;
+    }
+    public static int DeleteByValue(int[] arr, int n, int value)
+    {
+        int index=-1;
+        for(int i=0; i<n; i++)
+        {
+            if(arr[i]==value)
+            {
+                index=i;
+                break;
+                
+            }
+        }
+        if(index==-1)
+        {
+            System.out.print("Invalid value");
+            return n;
+        }
+        return DeleteByIndex(arr,n,index);
+    }
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter size: ");
+        int n=sc.nextInt();
+        int[] arr=new int[100];
+        System.out.print("Enter array elements: ");
+        for(int i=0; i<n; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        System.out.println("Choose :\n1. Delete by index\n2. Delete by value");
+        int choice=sc.nextInt();
+        if(choice==1)
+        {
+            System.out.print("Enter index: ");
+            int index=sc.nextInt();
+            n=DeleteByIndex(arr, n, index);
+        }
+        else if(choice==2)
+        {
+            System.out.print("Enter value: ");
+            int value=sc.nextInt();
+            n=DeleteByValue(arr, n, value);
+        }
+        else
+        {
+            System.out.print("invalid choice: ");
+        }
+        System.out.print("updated array: ");
+        for (int i = 0; i < n; i++)
+        {
+            System.out.print(arr[i] + " ");
+        }
+        sc.close();
+    }
+}
