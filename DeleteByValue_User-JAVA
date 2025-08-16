@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class DeleteByValue
+{
+    public static int DeleteByValue(int[] arr,int n, int value)
+    {
+        int index=-1;
+        for(int i=0; i<n;i++)
+        {
+            if(arr[i]==value)
+            {
+                index=i;
+                break;
+            }
+        }
+        if(index==-1)
+        {
+            System.out.print("Ivalid value.");
+            return n;
+        }
+        for(int i=index; i<n-1;i++)
+        {
+            arr[i]=arr[i+1];
+        }
+        return n-1;
+    }
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter size: ");
+        int n=sc.nextInt();
+        int [] arr=new int[100];
+        System.out.print("Enter array elementsd: ");
+        for(int i=0; i<n; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        System.out.print("Enter value to delete: ");
+        int value=sc.nextInt();
+        n=DeleteByValue(arr,n,value);
+        System.out.print("Updated array: ");
+        for(int i=0; i<n; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+        sc.close();
+    }
+}
