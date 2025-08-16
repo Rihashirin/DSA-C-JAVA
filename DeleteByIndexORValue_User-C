@@ -1,0 +1,74 @@
+#include<stdio.h>
+void DeleteByIndex(int arr[], int*n, int index)
+{
+        if(index<0 || index>=*n )
+        {
+            printf("Invalid index.");
+            return;
+        }
+        for(int i=index; i<*n-1; i++)
+        {
+            arr[i]=arr[i+1];
+        }
+        (*n)--;
+}
+void DeleteByValue(int arr[], int*n, int value)
+{
+    int index=-1;
+    for(int i=0; i<*n; i++)
+    {
+        if(arr[i]==value)
+        {
+            index=i;
+            break;
+        }
+    }
+    if(index==-1)
+    {
+        printf("invalid value.");
+        return;
+    }
+    DeleteByIndex(arr,n,index);
+}
+void printArr(int arr[], int n)
+{
+    printf("Updated array: ");
+    for(int i=0; i<n; i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+}
+int main()
+{
+    int arr[100],n,choice;
+    printf("enter size: ");
+    scanf("%d",&n);
+    printf("enter array elements: ");
+    for(int i=0; i<n; i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("Choose:\n1. Delete by index.\n2. Delete by value.\n");
+    scanf("%d",&choice);
+    if(choice==1)
+    {
+        int index;
+        printf("Enter index to delete: ");
+        scanf("%d",&index);
+        DeleteByIndex(arr,&n,index);
+    }
+    else if (choice==2)
+    {
+        int value;
+        printf("Enter val;ue to delete: ");
+        scanf("%d",&value);
+        DeleteByValue(arr,&n,value);
+    }
+    else
+    {
+        printf("Invalid choice.");
+    }
+    printArr(arr,n);
+    return 0;
+}
